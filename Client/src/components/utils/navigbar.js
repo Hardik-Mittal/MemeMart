@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import ReactDOM from 'react-dom';
+import "../../css/Navigbar.css";
+//import ReactDOM from 'react-dom';
 
 //Pages
 const Home = () => {
@@ -48,7 +49,7 @@ function NavBar() {
             <nav className="navbar" onClick={(e) => e.stopPropagation()}>
                 <div className="nav-container">
                     <NavLink exact to="/" className="nav-logo">
-                        CodeBucks
+                        MemeMart
                         <i className="fa fa-code"></i>
                     </NavLink>
 
@@ -106,7 +107,7 @@ function NavBar() {
         </ div>
     );
 }
-function App() {
+function Nav() {
 
     return (
         <>
@@ -127,4 +128,5 @@ function App() {
     );
 }
 
-ReactDOM.render(<App />, document.getElementsByClassName('App'));
+//ReactDOM.render(<Nav />, document.getElementById('nav'));
+export default Nav;

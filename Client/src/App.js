@@ -1,13 +1,16 @@
 //import logo from './logo.svg';
 import './App.css';
 import loadable from '@loadable/component';
-const Nav = loadable(() => import('./components/utils/Navigbar'));
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+const Nav = loadable(() => import('./components/utils/navigbar'));
 //import Nav from './components/utils/Navigbar';
 
 function App() {
   return (
-    <div className="App" id="nav">
-      <Nav></Nav>
+    <div className="App">
+      <BrowserRouter>
+          <Nav />
+      </BrowserRouter>
     </div>
   );
 }

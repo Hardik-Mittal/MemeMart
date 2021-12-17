@@ -35,23 +35,12 @@ export default function NavBar() {
                         <li className="nav-item">
                             <NavLink
                                 exact
-                                to="/about"
+                                to="/upload"
                                 activeClassName="active"
                                 className="nav-links"
                                 onClick={click ? handleClick : null}
                             >
-                                About
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                exact
-                                to="/blog"
-                                activeClassName="active"
-                                className="nav-links"
-                                onClick={click ? handleClick : null}
-                            >
-                                Blog
+                                Upload
                             </NavLink>
                         </li>
                         <li className="nav-item">
@@ -63,6 +52,17 @@ export default function NavBar() {
                                 onClick={click ? handleClick : null}
                             >
                                 Contact Us
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                exact
+                                to="/login"
+                                activeClassName="active"
+                                className="nav-links"
+                                onClick={click ? handleClick : null}
+                            >
+                                Login
                             </NavLink>
                         </li>
                     </ul>

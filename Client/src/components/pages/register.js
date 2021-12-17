@@ -33,6 +33,9 @@ export default function Register() {
                             <input type="text" className="form-control" placeholder="Password" />
                         </div>
                         <button type="button" className="btn btn-secondary btn-block mb-1">SIGNUP</button>
+                        <div className="mt-2">
+                            <div><a href="/login" className='text-align-center'>Already have an account?</a></div>
+                        </div>
                     </form>
                     <div className="social">
                         <a href="#"><i className="fab fa-facebook"></i></a>

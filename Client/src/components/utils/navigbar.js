@@ -17,7 +17,7 @@ export default function NavBar() {
                 <div className="nav-container">
                     <NavLink exact to="/" className="nav-logo">
                         MemeMart
-                        <i className="fa fa-code"></i>
+                        <i class="far fa-grin-tears"></i>
                     </NavLink>
 
                     <ul className={click ? "nav-menu active" : "nav-menu"}>

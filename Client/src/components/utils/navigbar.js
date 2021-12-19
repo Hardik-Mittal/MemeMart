@@ -43,7 +43,7 @@ class NavBar extends React.Component {
                                     Home
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <NavLink
                                     exact
                                     to="/upload"
@@ -53,7 +53,7 @@ class NavBar extends React.Component {
                                 >
                                     Upload
                                 </NavLink>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <NavLink
                                     exact
@@ -78,7 +78,7 @@ class NavBar extends React.Component {
                             </li>
                         </ul>
                         <div className="nav-icon" onClick={this.handleClick}>
-                            <i className={this.click ? "fa fa-times" : "fa fa-bars"}></i>
+                            <i className={this.click ? "fa fa-times" : "fa fa-bars"} style={{ "align-self": "center" }}></i>
                         </div>
                     </div>
                 </nav>

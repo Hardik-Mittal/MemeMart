@@ -1,0 +1,29 @@
+.thumbnail {
+    padding: 0px;
+    border: none;
+  }
+  
+  .thumbnail .caption {
+    padding: 9px;
+    color: #333;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  div.thumbnail > div.date_image_holder {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfpNCv8fSwftYoSSnzhSWsPcWilBzFdLMMnqgH07oycsRFkQk");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 200px;
+    margin: 0px;
+  }
+  
+  .heart_position {
+    font-size: 30px;
+    color: #FF7175;
+    float: right;
+    margin: 5px 8px 0px 0px;
+  }

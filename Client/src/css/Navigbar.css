@@ -24,6 +24,7 @@
     position: sticky;
     top: 0;
     z-index: 20;
+    padding: 0;
   }
   
   .nav-container {
@@ -52,6 +53,9 @@
     text-decoration: none;
     font-size: 2rem;
     flex-grow: 1;
+    display: flex;
+    /* margin-top: -1.5%; */
+    /* align-self: center; */
   }
   
   .nav-menu {
@@ -59,6 +63,8 @@
     list-style: none;
     text-align: center;
     margin-right: 2rem;
+    align-self: center;
+    margin-bottom: 0;
   }
   
   .nav-links {
@@ -98,6 +104,7 @@
   
   .nav-icon {
     display: none;
+    /* margin-top: -1.5%; */
   }
   
   @media screen and (max-width: 960px) {
@@ -136,7 +143,7 @@
       position: absolute;
       top: 0;
       right: 0;
-      transform: translate(-100%, 60%);
+      transform: translate(-100%, 40%);
       font-size: 1.8rem;
       cursor: pointer;
       color: #ffdd40;

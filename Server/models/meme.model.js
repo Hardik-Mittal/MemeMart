@@ -20,9 +20,7 @@ const memeSchema = new mongoose.Schema(
     pic: {
       type: String,
       default: '',
-    },
-    publishedAt: {
-      type: Date,
+      required: true,
     },
     public: {
       type: Boolean,

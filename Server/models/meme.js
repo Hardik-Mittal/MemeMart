@@ -4,22 +4,22 @@ const mongoose = require("mongoose");
 const memeSchema = new mongoose.Schema(
   {
     upcount: {
-        type: integer,
-        required: true,
-        default: 0
+      type: integer,
+      required: true,
+      default: 0
     },
     downcount: {
-        type: integer,
-        required: true,
-        default: 0
+      type: integer,
+      required: true,
+      default: 0
     },
     email: {
-        type: String,
-        default: '',
+      type: String,
+      required: true,
     },
     pic: {
       type: String,
-      default: ''
+      default: '',
     },
     publishedAt: {
       type: Date,
@@ -27,16 +27,18 @@ const memeSchema = new mongoose.Schema(
     public: {
       type: Boolean,
       default: false,
+      required: true,
     },
     template: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
+      required: true,
     },
     tags: [
-        {
-          type: String,
-          default: '',
-        },
+      {
+        type: String,
+        default: '',
+      },
     ],
   },
   { timestamps: true }

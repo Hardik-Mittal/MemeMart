@@ -4,73 +4,87 @@ import "../../css/Navigbar.css";
 //import ReactDOM from 'react-dom';
 
 
-export default function NavBar() {
-    const [click, setClick] = React.useState(false);
+class NavBar extends React.Component {
+    constructor() {
+        super();
 
-    const handleClick = () => setClick(!click);
-    const Close = () => setClick(false);
+        this.state = {
+            click: false,
+        }
+    }
+    // const[click, setClick] = React.useState(false);
+    setClick = () => {
+        this.setState({
+            click: true,
+        })
+    }
 
-    return (
-        <div>
-            <div className={click ? "main-container" : ""} onClick={() => Close()} />
-            <nav className="navbar" onClick={(e) => e.stopPropagation()}>
-                <div className="nav-container">
-                    <NavLink exact to="/" className="nav-logo">
-                        MemeMart
-                        <i class="far fa-grin-tears"></i>
-                    </NavLink>
+    handleClick = () => this.setClick(!this.click);
+    Close = () => this.setClick(false);
 
-                    <ul className={click ? "nav-menu active" : "nav-menu"}>
-                        <li className="nav-item">
-                            <NavLink
-                                exact
-                                to="/"
-                                activeClassName="active"
-                                className="nav-links"
-                                onClick={click ? handleClick : null}
-                            >
-                                Home
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                exact
-                                to="/upload"
-                                activeClassName="active"
-                                className="nav-links"
-                                onClick={click ? handleClick : null}
-                            >
-                                Upload
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                exact
-                                to="/contact"
-                                activeClassName="active"
-                                className="nav-links"
-                                onClick={click ? handleClick : null}
-                            >
-                                Contact Us
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                exact
-                                to="/login"
-                                activeClassName="active"
-                                className="nav-links"
-                                onClick={click ? handleClick : null}
-                            >
-                                Login
-                            </NavLink>
-                        </li>
-                    </ul>
-                    <div className="nav-icon" onClick={handleClick}>
-                        <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
+    render() {
+        return (
+            <div>
+                <div className={this.click ? "main-container" : ""} onClick={() => this.Close()} />
+                <nav className="navbar" onClick={(e) => e.stopPropagation()}>
+                    <div className="nav-container">
+
+                        {this.props.children}
+
+                        <ul className={this.click ? "nav-menu active" : "nav-menu"}>
+                            <li className="nav-item">
+                                <NavLink
+                                    exact
+                                    to="/"
+                                    activeClassName="active"
+                                    className="nav-links"
+                                    onClick={this.click ? this.handleClick : null}
+                                >
+                                    Home
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    exact
+                                    to="/upload"
+                                    activeClassName="active"
+                                    className="nav-links"
+                                    onClick={this.click ? this.handleClick : null}
+                                >
+                                    Upload
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    exact
+                                    to="/contact"
+                                    activeClassName="active"
+                                    className="nav-links"
+                                    onClick={this.click ? this.handleClick : null}
+                                >
+                                    Contact Us
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    exact
+                                    to="/login"
+                                    activeClassName="active"
+                                    className="nav-links"
+                                    onClick={this.click ? this.handleClick : null}
+                                >
+                                    Login
+                                </NavLink>
+                            </li>
+                        </ul>
+                        <div className="nav-icon" onClick={this.handleClick}>
+                            <i className={this.click ? "fa fa-times" : "fa fa-bars"}></i>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </ div>
-    );
+                </nav>
+            </ div >
+        );
+    }
 }
+
+export default NavBar;

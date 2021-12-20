@@ -9,7 +9,7 @@ const Register = loadable(() => import('./components/pages/register'));
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      
         <Nav />
         <Routes>
           <Route path="/login" element={<Login></Login>}>
@@ -17,7 +17,7 @@ function App() {
           <Route path="/signup" element={<Register></Register>}>
           </Route>
         </Routes>
-      </BrowserRouter>
+      
     </div>
   );
 }

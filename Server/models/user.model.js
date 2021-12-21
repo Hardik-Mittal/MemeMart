@@ -30,16 +30,21 @@ const userSchema = mongoose.Schema(
             required: true,
             min: [8, "Minimum length of password should be 8"],
             validate(value) {
-                if (!value.match(/\d/) || !value.match(/[a-z]/) || !value.match(/[A-Z]/) || !value.match(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/)) {
+                if (!value.match(/\d/) || !value.match(/[a-z]/) || !value.match(/[A-Z]/) || !value.match(/[-!$%^&*()_@+|~=`{}\[\]:";'<>?,.\/]/)) {
                     throw new Error(
                         "Password must contain a number, lowercase, uppercase letter and symbol"
                     )
                 }
             }
         },
+        confirmpassword: {
+            type: String,
+            required: true,
+        },
         admin: {
             type: Boolean,
             required: true,
+            default: false,
         },
         ban: {
             type: Number,
@@ -60,4 +65,4 @@ const userSchema = mongoose.Schema(
 /** 
 @typedef User
 */
-Module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);

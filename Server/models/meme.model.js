@@ -45,4 +45,4 @@ const memeSchema = new mongoose.Schema(
 /** 
 @typedef Meme
 */
-Module.exports = mongoose.model("Meme", memeSchema);
+module.exports = mongoose.model("Meme", memeSchema);

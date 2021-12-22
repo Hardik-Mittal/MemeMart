@@ -2,6 +2,10 @@ var mongoose = require("mongoose");
 // const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const validator = require("validator");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
+dotenv.config({path : './.env'});
 
 const userSchema = mongoose.Schema(
     {
@@ -37,10 +41,6 @@ const userSchema = mongoose.Schema(
                 }
             }
         },
-        confirmpassword: {
-            type: String,
-            required: true,
-        },
         admin: {
             type: Boolean,
             required: true,
@@ -61,6 +61,24 @@ const userSchema = mongoose.Schema(
         timestamps: true,
     }
 );
+
+
+userSchema.pre('save', async function(next) {
+    if(this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 12);
+    }
+
+    next();
+})
+
+userSchema.methods.generateAuthToken = async function () {
+    try{
+        let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
+        return token;
+    }catch (err) {
+        console.log(err);
+    }
+}
 
 /** 
 @typedef User

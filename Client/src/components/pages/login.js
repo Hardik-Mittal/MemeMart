@@ -1,9 +1,43 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import "../../css/login.css";
 import NavBar from '../utils/navigbar';
 
 export default function Login() {
+
+    const navigate = useNavigate();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const loginUser = async (e) => {
+        e.preventDefault();
+
+        const res = await fetch('/login', {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                email, 
+                password
+            })
+        });
+
+        const data = await res.json();
+        console.log(res.status);
+        console.log(data.error);
+
+        if(res.status === 422 || data.error==="Incomplete Data"){
+            window.alert("Invalid registration!");
+            console.log("Invalid registration");
+        } else {
+            window.alert("Registration Successfull");
+            console.log("Registration Successful");
+
+            navigate('/');
+        }
+    }
 
     return (
         <>
@@ -21,20 +55,20 @@ export default function Login() {
                         </div>
                     </div>
                     <div className="body-form">
-                        <form>
+                        <form method="POST">
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Username" />
+                                <input type="text" className="form-control" placeholder="Email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-lock"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Password" />
+                                <input type="text" className="form-control" placeholder="Password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
-                            <button type="button" className="btn btn-secondary btn-block">LOGIN</button>
+                            <button type="button" className="btn btn-secondary btn-block" onClick={loginUser} >LOGIN</button>
                             <div className="mb-3">
                                 <div><a href="/signup" className='text-align-center'>Create an account?</a></div>
                             </div>

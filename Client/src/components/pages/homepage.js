@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../utils/navigbar';
 import Tile from '../utils/tile';
+import Memecard from '../utils/memecards';
 import { Input } from "antd";
 import { NavLink } from 'react-router-dom';
 
@@ -20,8 +21,8 @@ class Home extends React.Component {
 
                 <div class="container container-fluid">
                     <div class="row row-fluid">
-                        <Tile>
-                        </Tile>
+                        <Memecard>
+                        </Memecard>
                     </div>
                 </div>
 

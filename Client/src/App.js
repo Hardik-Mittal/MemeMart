@@ -11,15 +11,16 @@ const Home = loadable(() => import('./components/pages/homepage'));
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
         <Routes>
           <Route path="/login" element={<Login></Login>}>
           </Route>
           <Route path="/signup" element={<Register></Register>}>
           </Route>
           <Route exact path="/" element={<Home></Home>}></Route>
+          
         </Routes>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
     </div>
   );
 }

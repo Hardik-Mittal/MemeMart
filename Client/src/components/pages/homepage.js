@@ -1,9 +1,10 @@
 import React from 'react';
 import NavBar from '../utils/navigbar';
-import Tile from '../utils/tile';
+// import Tile from '../utils/tile';
 import Memecard from '../utils/memecards';
 import { Input } from "antd";
 import { NavLink } from 'react-router-dom';
+import Toggle from '../utils/toggle';
 
 class Home extends React.Component {
 
@@ -19,6 +20,7 @@ class Home extends React.Component {
                     </NavLink>
                 </NavBar >
 
+
                 <div class="container container-fluid">
                     <div class="row row-fluid">
                         <Memecard>
@@ -26,6 +28,7 @@ class Home extends React.Component {
                     </div>
                 </div>
 
+                <Toggle></Toggle>
             </>
         )
     }

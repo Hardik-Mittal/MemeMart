@@ -26,16 +26,16 @@ export default function Login() {
 
         const data = await res.json();
         console.log(res.status);
-        console.log(data.error);
+        console.log(data);
 
-        if(res.status === 422 || data.error==="Incomplete Data"){
-            window.alert("Invalid registration!");
-            console.log("Invalid registration");
-        } else {
+        if(data.message === "logged in successfully"){
             window.alert("Registration Successfull");
             console.log("Registration Successful");
 
-            navigate('/');
+            navigate('/');   
+        } else {
+            window.alert("Invalid login!");
+            console.log("Invalid registration");
         }
     }
 

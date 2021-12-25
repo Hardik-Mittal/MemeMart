@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'antd/dist/antd.css';
 const Nav = loadable(() => import('./components/utils/navigbar'));
 const Login = loadable(() => import('./components/pages/login'));
+const Dashboard = loadable(() => import('./components/pages/dashboard'));
 const Register = loadable(() => import('./components/pages/register'));
 const Home = loadable(() => import('./components/pages/homepage'));
 
@@ -16,6 +17,8 @@ function App() {
           <Route path="/login" element={<Login></Login>}>
           </Route>
           <Route path="/signup" element={<Register></Register>}>
+          </Route>
+          <Route exact path="/dashboard" element={<Dashboard></Dashboard>}>
           </Route>
           <Route exact path="/" element={<Home></Home>}></Route>
           

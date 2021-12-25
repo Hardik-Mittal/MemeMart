@@ -26,7 +26,8 @@ router.post("/register", async (req, res) => {
     try{
 
         const userExist = await User.findOne({ email });
-
+        console.log(userExist);
+        
         if(userExist){
             return res.status(422).json({ error : "Email already exists "});
         }
@@ -84,10 +85,11 @@ router.post("/login", async (req, res) => {
 })
 
 
-//authenticate to visit home page
-// router.get("/", authenticate, (req, res) => {
-//     console.log('Hello from home page');
-//     // console.log(req);
-// })
+// authenticate to visit home page
+router.get("/dashboard", authenticate, (req, res) => {
+    console.log('Hello from home page');
+    res.json({ message: "Authorized !", user: req.user });
+    console.log(req.user);
+})
 
 module.exports = router;

@@ -42,17 +42,19 @@ export default function Register() {
 
         const data = await res.json();
         console.log(res.status);
-        console.log(data.error);
+        // console.log(data.error);
+        console.log(data);
 
-        if(res.status === 422 || data.error==="Incomplete Data"){
-            window.alert("Invalid registration!");
-            console.log("Invalid registration");
-        } else {
+        if (data.message==="user registered successfully"){
             window.alert("Registration Successfull");
             console.log("Registration Successful");
-
+ 
             navigate('/login');
         }
+        else {
+            window.alert("Invalid registration!");
+            console.log("Invalid registration");
+        } 
     }
 
     return (

@@ -29,13 +29,13 @@ export default function Login() {
         console.log(data);
 
         if(data.message === "logged in successfully"){
-            window.alert("Registration Successfull");
-            console.log("Registration Successful");
+            window.alert("loggin Successfull");
+            console.log("loggin Successful");
 
             navigate('/');   
         } else {
             window.alert("Invalid login!");
-            console.log("Invalid registration");
+            console.log("Invalid login");
         }
     }
 

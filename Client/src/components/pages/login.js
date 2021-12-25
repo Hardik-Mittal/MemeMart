@@ -32,7 +32,7 @@ export default function Login() {
             window.alert("loggin Successfull");
             console.log("loggin Successful");
 
-            navigate('/');   
+            navigate('/dashboard');   
         } else {
             window.alert("Invalid login!");
             console.log("Invalid login");

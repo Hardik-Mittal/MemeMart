@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import "../../css/login.css";
 import NavBar from '../utils/navigbar';
@@ -19,23 +19,23 @@ export default function Register() {
         name = e.target.name;
         value = e.target.value;
 
-        setUser({ ...user, [name]:value});
+        setUser({ ...user, [name]: value });
     }
 
     const PostData = async (e) => {
         e.preventDefault();
 
         const { username, email, password } = user;
-        
-        const res = await fetch("/register", {
+
+        const res = await fetch("/user/register", {
             // mode: 'cors',
             method: "POST",
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 username,
-                email, 
+                email,
                 password
             })
         });
@@ -45,16 +45,16 @@ export default function Register() {
         // console.log(data.error);
         console.log(data);
 
-        if (data.message==="user registered successfully"){
+        if (data.message === "user registered successfully") {
             window.alert("Registration Successfull");
             console.log("Registration Successful");
- 
+
             navigate('/login');
         }
         else {
             window.alert("Invalid registration!");
             console.log("Invalid registration");
-        } 
+        }
     }
 
     return (
@@ -78,21 +78,21 @@ export default function Register() {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Username" name="username" value = {user.username} onChange={ handleInput } />
+                                <input type="text" className="form-control" placeholder="Username" name="username" value={user.username} onChange={handleInput} />
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fas fa-envelope"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Email Address" name="email" value={ user.email } onChange={ handleInput } />
+                                <input type="text" className="form-control" placeholder="Email Address" name="email" value={user.email} onChange={handleInput} />
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-lock"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Password" name="password" value={ user.password } onChange={ handleInput } />
+                                <input type="text" className="form-control" placeholder="Password" name="password" value={user.password} onChange={handleInput} />
                             </div>
-                            <button type="button" className="btn btn-secondary btn-block mb-1" onClick={ PostData }>SIGNUP</button>
+                            <button type="button" className="btn btn-secondary btn-block mb-1" onClick={PostData}>SIGNUP</button>
                             <div className="mt-2">
                                 <div><a href="/login" className='text-align-center'>Already have an account?</a></div>
                             </div>

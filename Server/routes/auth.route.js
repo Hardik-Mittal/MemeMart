@@ -7,64 +7,66 @@ const authenticate = require("../middleware/authenticate");
 const User = require("../models/user.model");
 
 // router.get("/", (req, res) => {
-    
+
 //     res.send("hello from server auth router");
 // })
 
 //registration route
 
 router.post("/register", async (req, res) => {
+    // console.log(req);
     const { username, email, password } = req.body;
     const admin = false;
     const ban = 0;
     const confirmed = false;
 
-    if(!username || !email || !password ){
-        return res.status(422).json({ error : "Incomplete Data"});
+    if (!username || !email || !password) {
+        return res.status(422).json({ error: "Incomplete Data" });
     }
 
-    try{
+    try {
 
         const userExist = await User.findOne({ email });
         console.log(userExist);
-        
-        if(userExist){
-            return res.status(422).json({ error : "Email already exists "});
+
+        if (userExist) {
+            return res.status(422).json({ error: "Email already exists " });
         }
         const user = new User({ username, email, password, admin, ban, confirmed });
 
         await user.save();
-        res.status(201).json({ message : "user registered successfully" });
+        res.status(201).json({ message: "user registered successfully" });
 
-    } catch(err) {
+    } catch (err) {
         console.log(err);
-        res.status(500).json({ error : "Failed to register" });
+        res.status(500).json({ error: "Failed to register" });
     }
 
 })
 
 //login route
 router.post("/login", async (req, res) => {
+    console.log(req.body);
     const { email, password } = req.body;
 
-    if(!email || !password){
-        return res.status(422).json({ error : "Incomplete Data"});
+    if (!email || !password) {
+        return res.status(422).json({ error: "Incomplete Data" });
     }
 
-    try{
+    try {
 
         const userExist = await User.findOne({ email });
 
         // console.log(userExist);
 
-        if(!userExist){
-            res.status(422).json({ error : "User does not exists "});
-        }else{
+        if (!userExist) {
+            res.status(422).json({ error: "User does not exists " });
+        } else {
             const checkpassword = await bcrypt.compare(password, userExist.password);
 
-            if(!checkpassword){
-                res.status(422).json({ error : " Invalid password "});
-            }else{
+            if (!checkpassword) {
+                res.status(422).json({ error: " Invalid password " });
+            } else {
                 const token = await userExist.generateAuthToken();
                 console.log(token);
 
@@ -73,13 +75,14 @@ router.post("/login", async (req, res) => {
                     httpOnly: true,
                 })
 
-                res.json({message : "logged in successfully"})
+                res.status(200).json({ message: "logged in successfully" })
+                // res.status(200).send("logged in successfully");
             }
         }
 
-    } catch(err) {
+    } catch (err) {
         console.log(err);
-        res.status(500).json({ error : "Failed to register" });
+        res.status(500).json({ error: "Failed to register" });
     }
 
 })

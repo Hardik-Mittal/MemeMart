@@ -13,26 +13,26 @@ export default function Login() {
     const loginUser = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/login', {
+        const res = await fetch('/user/login', {
             method: "POST",
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email, 
+                email,
                 password
             })
         });
 
         const data = await res.json();
-        console.log(res.status);
-        console.log(data);
+        //console.log(res.status);
+        //console.log(data);
 
-        if(data.message === "logged in successfully"){
+        if (data.message === "logged in successfully") {
             window.alert("loggin Successfull");
             console.log("loggin Successful");
 
-            navigate('/dashboard');   
+            // navigate('/dashboard');   
         } else {
             window.alert("Invalid login!");
             console.log("Invalid login");

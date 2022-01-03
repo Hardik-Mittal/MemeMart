@@ -4,27 +4,30 @@ const mongoose = require("mongoose");
 const memeSchema = new mongoose.Schema(
   {
     upcount: {
-      type: integer,
+      type: Number,
       required: true,
       default: 0
     },
     downcount: {
-      type: integer,
+      type: Number,
       required: true,
       default: 0
     },
-    email: {
+    username: {
       type: String,
       required: true,
     },
     pic: {
-      type: String,
+      type: {
+        data: Buffer,
+        contentType: String,
+      },
       default: '',
       required: true,
     },
     public: {
       type: Boolean,
-      default: false,
+      default: true,
       required: true,
     },
     template: {

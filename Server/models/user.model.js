@@ -5,7 +5,7 @@ const validator = require("validator");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 
-dotenv.config({path : './.env'});
+dotenv.config({ path: './.env' });
 
 const userSchema = mongoose.Schema(
     {
@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema(
             type: String,
             required: true,
             trim: true,
+            unique: true,
         },
         email: {
             type: String,
@@ -63,8 +64,8 @@ const userSchema = mongoose.Schema(
 );
 
 
-userSchema.pre('save', async function(next) {
-    if(this.isModified('password')) {
+userSchema.pre('save', async function (next) {
+    if (this.isModified('password')) {
         this.password = await bcrypt.hash(this.password, 12);
     }
 
@@ -72,10 +73,10 @@ userSchema.pre('save', async function(next) {
 })
 
 userSchema.methods.generateAuthToken = async function () {
-    try{
+    try {
         let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
         return token;
-    }catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }

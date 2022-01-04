@@ -66,7 +66,7 @@ export default function Login() {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-lock"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
                             <button type="button" className="btn btn-secondary btn-block" onClick={loginUser} >LOGIN</button>
                             <div className="mb-3">

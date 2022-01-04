@@ -43,7 +43,7 @@ export default function Register() {
         const data = await res.json();
         console.log(res.status);
         // console.log(data.error);
-        console.log(data);
+        //console.log(data);
 
         if (data.message === "user registered successfully") {
             window.alert("Registration Successfull");
@@ -90,7 +90,7 @@ export default function Register() {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-lock"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Password" name="password" value={user.password} onChange={handleInput} />
+                                <input type="password" className="form-control" placeholder="Password" name="password" value={user.password} onChange={handleInput} />
                             </div>
                             <button type="button" className="btn btn-secondary btn-block mb-1" onClick={PostData}>SIGNUP</button>
                             <div className="mt-2">

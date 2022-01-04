@@ -18,7 +18,6 @@ const addMeme = async (req) => {
     //console.log(newMeme);
     newMeme.pic.data = fs.readFileSync("./uploads/" + req.file.filename);
     newMeme.pic.contentType = "image/png";
-    //console.log(newMeme);
     //console.log(req.user);
     newMeme.username = req.user.username;
     if (req.body.tags != null && req.body.tags != undefined) {

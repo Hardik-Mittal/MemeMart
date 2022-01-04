@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBar from '../utils/navigbar';
-// import Tile from '../utils/tile';
 import Memecard from '../utils/memecards';
 import { Input } from "antd";
 import { NavLink } from 'react-router-dom';

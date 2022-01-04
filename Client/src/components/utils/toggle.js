@@ -19,7 +19,7 @@ class Toggle extends React.Component {
             <Footer style={{ textAlign: 'center', position: 'fixed', bottom: '0', right: '0', left: '0' }}>
                 <div style={{ display: 'flex' }} className='row'>
                     <div className="col-5 flex-grow-1">Meme</div>
-                    <Switch defaultChecked onChange={this.changing} className="col-2" style={{ 'max-width': '44px', textAlign: 'center' }} />
+                    <Switch defaultUnChecked onChange={this.changing} className="col-2" style={{ 'max-width': '44px', textAlign: 'center' }} />
                     <div className="col-5 flex-grow-1">Template</div>
                 </div>
             </Footer>

@@ -6,8 +6,11 @@ const httpStatus = require("http-status");
 const { Router } = require("express");
 const upload = require("../middleware/image");
 
+/**
+ *  memes/template for homepage
+ */
 router.get("/", async (req, res) => {
-    const memes = await memeService.getMeme();
+    const memes = await memeService.getMemes();
     res.send(memes);
 })
 
@@ -16,7 +19,7 @@ router.get("/:memeId", async (req, res) => {
     if (!meme) {
         res.status(httpStatus.NOT_FOUND).json({ error: "Meme Not Found" });
     }
-    res.send(meme);
+    res.status(httpStatus.FOUND).send(meme);
 })
 
 // router.get("/", authenticate, async (req, res) => {
@@ -27,7 +30,7 @@ router.get("/:memeId", async (req, res) => {
 //     res.send(meme);
 // })
 
-router.post("/upload", authenticate, upload.single("image"), async (req, res) => {
+router.post("/upload", authenticate, upload.single("image"), async (req, res, err) => {
     //console.log(req);
     if (req.file == undefined || req.file == null) {
         console.log("failure");

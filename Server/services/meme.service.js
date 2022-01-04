@@ -5,7 +5,7 @@ const getMemeByEmail = async (email, template) => {
     return Meme.find({ email, template });
 }
 
-const getMeme = async () => {
+const getMemes = async () => {
     return Meme.find({ public: true });
 }
 
@@ -16,9 +16,9 @@ const getMemeById = async (id) => {
 const addMeme = async (req) => {
     var newMeme = new Meme();
     if (req.body.tags != null && req.body.tags != undefined) {
-        newMeme.tags = req.body.tags;
+        newMeme.tags = (req.body.tags).split(',');
     }
-    if (req.body.template != null && req.body.template != undefined && (req.body.public === "true" || req.body.public === "false")) {
+    if (req.body.template != null && req.body.template != undefined && (req.body.template === "true" || req.body.template === "false")) {
         newMeme.template = req.body.template;
     }
     if (req.body.public != null && req.body.public != undefined && (req.body.public === "true" || req.body.public === "false")) {
@@ -34,7 +34,7 @@ const addMeme = async (req) => {
 }
 
 module.exports = {
-    getMeme,
+    getMemes,
     getMemeByEmail,
     getMemeById,
     addMeme,

@@ -16,6 +16,9 @@ const fileStorage = multer.diskStorage({
 
 const upload = multer({
     storage: fileStorage,
+    limits: {
+        fileSize: 4000000,
+    },
     fileFilter
         : (req, file, cb) => {
             let imageType = getExtension(file.originalname).toLowerCase();
@@ -25,7 +28,7 @@ const upload = multer({
             else {
                 return cb(null, true);
             }
-        }
+        },
 });
 
 module.exports = upload;

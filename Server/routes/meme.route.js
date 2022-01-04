@@ -4,6 +4,7 @@ const authenticate = require("../middleware/authenticate");
 const { memeService } = require("../services");
 const httpStatus = require("http-status");
 const { Router } = require("express");
+var multer = require("multer");
 
 router.get("/", async (req, res) => {
     const memes = await memeService.getMeme();
@@ -26,10 +27,27 @@ router.get("/:memeId", async (req, res) => {
 //     res.send(meme);
 // })
 
-router.post("/upload", authenticate, async (req, res) => {
-    //console.log("meme = " + req.body.pic);
-    const meme = await memeService.addMeme(req);
-    res.send(meme);
+
+const fileStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./uploads");
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + "_" + file.originalname);
+    },
+});
+
+const upload = multer({ storage: fileStorage });
+
+router.post("/upload", authenticate, upload.single("image"), async (req, res) => {
+    //console.log(req);
+    if (req.file == undefined || req.file == null)
+        res.status(httpStatus.NO_CONTENT).json({ error: "Meme is not uploaded" });
+    else {
+        //console.log("success");
+        await memeService.addMeme(req);
+        res.status(httpStatus.CREATED).json({ message: "Meme uploaded successfully" });
+    }
 });
 
 module.exports = router;

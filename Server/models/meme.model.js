@@ -18,12 +18,9 @@ const memeSchema = new mongoose.Schema(
       required: true,
     },
     pic: {
-      type: {
-        data: Buffer,
-        contentType: String,
-      },
+      data: Buffer,
+      contentType: String,
       default: '',
-      required: true,
     },
     public: {
       type: Boolean,

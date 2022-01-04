@@ -13,12 +13,8 @@ app.use(cookieParser());
 
 app.use(routes);
 
-app.use(multer({
-    dest: './uploads/',
-    rename: function (fieldname, filename) {
-        return (filename + "-" + Date.now());
-    },
-}).any());
+
+//app.use(upload.single("image"));
 
 app.listen(port, () => {
     console.log(`connection is set up at port : ${port}`);

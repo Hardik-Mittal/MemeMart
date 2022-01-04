@@ -15,20 +15,20 @@ const getMemeById = async (id) => {
 
 const addMeme = async (req) => {
     var newMeme = new Meme();
-    //console.log(newMeme);
-    newMeme.pic.data = fs.readFileSync("./uploads/" + req.file.filename);
-    newMeme.pic.contentType = "image/png";
-    //console.log(req.user);
-    newMeme.username = req.user.username;
     if (req.body.tags != null && req.body.tags != undefined) {
         newMeme.tags = req.body.tags;
     }
-    if (req.body.template != null && req.body.template != undefined) {
+    if (req.body.template != null && req.body.template != undefined && (req.body.public === "true" || req.body.public === "false")) {
         newMeme.template = req.body.template;
     }
-    if (req.body.public != null && req.body.public != undefined) {
+    if (req.body.public != null && req.body.public != undefined && (req.body.public === "true" || req.body.public === "false")) {
         newMeme.public = req.body.public;
     }
+    console.log(newMeme);
+    newMeme.pic.data = fs.readFileSync("./uploads/" + req.file.filename);
+    newMeme.pic.contentType = "image/png";
+    console.log(req.body);
+    newMeme.username = req.user.username;
     await newMeme.save();
     //return newMeme;
 }
